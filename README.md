@@ -2,9 +2,11 @@
 
 ## PyPI idna 3.2
 
-UI: https://pypi.org/project/idna/#files
+### base info on idna 3.2
 
-metadata: https://pypi.org/pypi/idna/json
+idna on PyPI UI: https://pypi.org/project/idna/#files
+
+metadata as json: https://pypi.org/pypi/idna/json
 
 ```
 ...
@@ -61,22 +63,22 @@ metadata: https://pypi.org/pypi/idna/json
 ...
 ```
 
+associated Debian package tracker https://tracker.debian.org/pkg/python-idna
 
-Debian package tracker https://tracker.debian.org/pkg/python-idna
+### rebuild instructions
 
-checkout `v3.2`
+- git clone https://github.com/kjd/idna, checkout `v3.2`
 
-```
-python3 setup.py build bdist_wheel sdist
-```
+- rebuilt command: `python3 setup.py build bdist_wheel sdist`
+  (notice: next versions switched from `setup.py` to `pyproject.toml`, command varies over versions)
 
-results:
+- results:
 ```
 dist/idna-3.2-py3-none-any.whl
 dist/idna-3.2.tar.gz
 ```
 
-compare with reference PyPI content:
+### compare with reference PyPI content
 ```
 wget https://files.pythonhosted.org/packages/cb/38/4c4d00ddfa48abe616d7e572e02a04273603db446975ab46bbcd36552005/idna-3.2.tar.gz
 diffoscope idna-3.2.tar.gz dist/idna-3.2.tar.gz
@@ -85,7 +87,7 @@ wget https://files.pythonhosted.org/packages/d7/77/ff688d1504cdc4db2a938e2b7b9ad
 diffoscope idna-3.2-py3-none-any.whl dist/idna-3.2-py3-none-any.whl
 ```
 
-results:
+diffoscope results:
 
 ```
 --- idna-3.2.tar.gz
@@ -257,4 +259,4 @@ differences explanation:
 
 differences explanation:
 - zip timestamp
-- bdist_wheel package version difference used during package build
+- bdist_wheel package version difference used during package build => rebuild env constraint to be defined
